@@ -3,11 +3,13 @@ import express from 'express';
 import mongoose from 'mongoose';
 import cors from 'cors';
 import bodyParser from 'body-parser';
+import dotenv from 'dotenv';
 
 import userRouter from './routes/user.js';
 
 //START APP 
 const app = express();
+dotenv.config();
 
 app.use(express.json())
 app.use(bodyParser.urlencoded({
@@ -22,6 +24,6 @@ app.use(cors());
 const CONNECTION_URL = ""
 const PORT = process.env.PORT || 8000;
 
-mongoose.connect("mongodb+srv://jay2:jay@cluster0.amnj6.mongodb.net/EyeBeauty?retryWrites=true&w=majority", {useNewUrlParser: true})
+mongoose.connect(process.env.DATABASE_ACCESS, {useNewUrlParser: true})
     .then(()=> app.listen(PORT, () => console.log('Sever up')))
     .catch( (error)=> console.log(error.message));
