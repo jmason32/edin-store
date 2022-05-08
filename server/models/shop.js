@@ -11,16 +11,32 @@ const shopSchema = mongoose.Schema(
       required: true,
       unique: true,
     },
-    isAdmin: {
-      type: Boolean,
-      required: true,
-      default: false,
-    },
-    pic: {
+    booking_link: {
       type: String,
-      required: true,
-      default:
-        "https://icon-library.com/images/anonymous-avatar-icon/anonymous-avatar-icon-25.jpg",
+      required: false,
+    },
+    shop_owner: {
+      type: String,
+      required: true
+    },
+    shop_text: {
+      type: String,
+    },
+    shop_hours: {
+      type: Array
+    },
+    instagram: {
+      type: String
+    },
+    speciality: {
+      type: Array
+    },
+    address: {
+      type: String
+    },
+    createdAt: {
+      type: Date,
+      default: Date.now()
     },
   },
   {
@@ -29,6 +45,6 @@ const shopSchema = mongoose.Schema(
 );
 
 
-const Shop = mongoose.model("Shop", userSchema);
+const Shop = mongoose.model("shop", shopSchema);
 
 export default Shop;
