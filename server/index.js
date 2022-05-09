@@ -38,7 +38,7 @@ app.use('/shops', shopRoutes)
 app.use(cors());
 
 // CREDS for DB Connection
-const PORT = process.env.PORT || 8000;
+const PORT = process.env.PORT || 8080;
 
 mongoose.connect(process.env.DATABASE_ACCESS, {useNewUrlParser: true})
     .then(()=> app.listen(PORT, () => console.log('Sever up')))

@@ -6,7 +6,7 @@
 import express from 'express';
 
 // Controller Imports
-import { registerUser } from '../controllers/user.js';
+import { authUser, registerUser } from '../controllers/user.js';
 
 //Router Start
 const router = express.Router();
@@ -29,5 +29,6 @@ const router = express.Router();
  * @param {*} res 
  */
 router.post('/', registerUser)
+router.post('/login', authUser)
 
 export default router;
