@@ -28,7 +28,7 @@ const router = express.Router();
  * @param {*} req 
  * @param {*} res 
  */
-router.post('/', registerUser)
-router.post('/login', authUser)
+router.post('/', registerUser) // localhost:port/user/
+router.post('/login', authUser)// localhost:port/user/login
 
 export default router;

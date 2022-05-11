@@ -44,6 +44,8 @@ export const registerUser = asyncHandler(async (req, res) => {
 
     //If created user successful, send response status
     if (user) {
+        res.setHeader('Access-Control-Allow-Origin', '*');
+        res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
         res.status(201).json({
             _id: user._id,
             name: user.name,
