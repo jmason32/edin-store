@@ -4,9 +4,23 @@ import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import "./LandingStyles.css";
 
+/**
+ * 
+ * TODO: 
+ *  Show all shops 
+ *  Allow user to click shops and view shop information 
+ * 
+ * 
+ * 
+ * @param {*} param0 
+ * @returns 
+ */
+
 function LandingPage({ history }) {
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
+
+  console.log(userInfo)
 
   useEffect(() => {
     if (userInfo) {

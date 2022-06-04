@@ -8,6 +8,12 @@ import {
   noteUpdateReducer,
 } from "./reducers/notesReducers";
 import {
+  shopCreateReducer,
+  shopDeleteReducer,
+  shopListReducer,
+  shopUpdateReducer,
+} from "./reducers/shopReducers";
+import {
   userLoginReducer,
   userRegisterReducer,
   userUpdateReducer,
@@ -17,10 +23,8 @@ const reducer = combineReducers({
   noteList: noteListReducer,
   userLogin: userLoginReducer,
   userRegister: userRegisterReducer,
-  noteCreate: noteCreateReducer,
-  noteDelete: noteDeleteReducer,
-  noteUpdate: noteUpdateReducer,
   userUpdate: userUpdateReducer,
+  shopList: shopListReducer,
 });
 
 const userInfoFromStorage = localStorage.getItem("userInfo")

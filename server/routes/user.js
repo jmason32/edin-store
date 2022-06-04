@@ -31,4 +31,8 @@ const router = express.Router();
 router.post('/', registerUser) // localhost:port/user/
 router.post('/login', authUser)// localhost:port/user/login
 
+//TODO: Udate user 
+
+
+
 export default router;

@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import ReactMarkdown from "react-markdown";
 
 import { useDispatch, useSelector } from "react-redux";
-import { deleteNoteAction, listNotes } from "../../actions/notesActions";
+import { listShops } from "../../actions/shopActions";
 import Loading from "../../components/Loading";
 import ErrorMessage from "../../components/ErrorMessage";
 
@@ -16,11 +16,11 @@ import ErrorMessage from "../../components/ErrorMessage";
  * @param {*} param0 
  * @returns 
  */
-function MyNotes({ history, search }) {
+function WelcomePage({ history, search }) {
   const dispatch = useDispatch();
 
-  const noteList = useSelector((state) => state.noteList);
-  const { loading, error, notes } = noteList;
+  const shopList = useSelector((state) => state.shopList);
+  const { loading, error, notes } = shopList;
 
   // const filteredNotes = notes.filter((note) =>
   //   note.title.toLowerCase().includes(search.toLowerCase())
@@ -29,21 +29,9 @@ function MyNotes({ history, search }) {
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
 
-  const noteDelete = useSelector((state) => state.noteDelete);
-  const {
-    loading: loadingDelete,
-    error: errorDelete,
-    success: successDelete,
-  } = noteDelete;
-
-  const noteCreate = useSelector((state) => state.noteCreate);
-  const { success: successCreate } = noteCreate;
-
-  const noteUpdate = useSelector((state) => state.noteUpdate);
-  const { success: successUpdate } = noteUpdate;
 
   useEffect(() => {
-    dispatch(listNotes());
+    dispatch(listShops());
     if (!userInfo) {
       history.push("/");
     }
@@ -51,28 +39,16 @@ function MyNotes({ history, search }) {
     dispatch,
     history,
     userInfo,
-    successDelete,
-    successCreate,
-    successUpdate,
   ]);
-
-  const deleteHandler = (id) => {
-    if (window.confirm("Are you sure?")) {
-      dispatch(deleteNoteAction(id));
-    }
-  };
 
   return (
     <MainScreen title={`Welcome Back ${userInfo && userInfo.name}..`}>
       {console.log(notes)}
       
       {error && <ErrorMessage variant="danger">{error}</ErrorMessage>}
-      {errorDelete && (
-        <ErrorMessage variant="danger">{errorDelete}</ErrorMessage>
-      )}
+      
       {loading && <Loading />}
-      {loadingDelete && <Loading />}
-      {/* {notes &&
+      {notes &&
         notes
           .filter((filteredNote) =>
             filteredNote.title.toLowerCase().includes(search.toLowerCase())
@@ -102,7 +78,7 @@ function MyNotes({ history, search }) {
                     </Accordion.Toggle>
                   </span>
 
-                  <div>
+                  {/* <div>
                     <Button href={`/note/${note._id}`}>Edit</Button>
                     <Button
                       variant="danger"
@@ -111,7 +87,7 @@ function MyNotes({ history, search }) {
                     >
                       Delete
                     </Button>
-                  </div>
+                  </div> */}
                 </Card.Header>
                 <Accordion.Collapse eventKey="0">
                   <Card.Body>
@@ -133,9 +109,9 @@ function MyNotes({ history, search }) {
                 </Accordion.Collapse>
               </Card>
             </Accordion>
-          ))} */}
+          ))}
     </MainScreen>
   );
 }
 
-export default MyNotes;
+export default WelcomePage;
